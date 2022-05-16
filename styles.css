@@ -237,3 +237,12 @@ label {
 .tbi-bday::before {
     content: "🎂 ";
 }
+
+
+#github-footer {
+    clear:both;
+    padding-top : 20px;
+    font-size : 10px;
+    color : gray;
+    text-align: center;
+}

@@ -56,5 +56,23 @@ Le signe 🖊️ en haut à droite de l'avatar donne accés à une page d'import
 
 ## config.php
 
+### Mot de passe édition
+Variable ***$md5pw***, à faire : changer le mot de passe pour le mode "édition", plus exactement son hash md5.
+### Champs éditables
+Variable ***$fields*** : champs de la base, un tableau permet de définir les champs qu'on veut avoir pour chaque fiche. Mieux vaut laisser les champs "name" et "surname" car ils sont utilisés pour les recherches de fiches.
+
+Pour chaque champ on donne le type d'input (date, text, textarea, email), et un label.
+### Autres
+
+Vous trouverez quelques paramètres suplémentaires comme les titres et sous titre pour le trombinoscope, ou encore le nombre de fiches par pages.
+
 ## styles.css
+
+L'allure des cartes de visites affiches dépend de ***styles.css***. 
+
+Vous pourrez notamment chanegr la hauteur des cartes selon vos besoins, et personnaliser chaque champs.
+
+A chaque champs défini dans le tableau ***$fields*** dans ***config.php*** est associé un style qu'il suffira de modifier. Au champ ayant la clé "xxxx" correspond le style "tbi-xxxx".
+
+Exemple: le champ nom *"name"* est affiché selon la règle css *.tbi-name*.
 

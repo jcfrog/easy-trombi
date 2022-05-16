@@ -76,3 +76,6 @@ A chaque champs défini dans le tableau ***$fields*** dans ***config.php*** est 
 
 Exemple: le champ nom *"name"* est affiché selon la règle css *.tbi-name*.
 
+# license
+
+GPL 3

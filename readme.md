@@ -50,6 +50,8 @@ La page de création/édition dispose d'un outil de recherche sur les noms et pr
 
 Le signe 🖊️ en haut à droite de l'avatar donne accés à une page d'import/collage d'image permettant de rapidement créer un avatar à la bonne dimension et recadré.
 
+![index edition avatar](./doc/trombi-4.png)
+
 
 # Personalisation
 
@@ -57,3 +59,4 @@ Le signe 🖊️ en haut à droite de l'avatar donne accés à une page d'import
 
 
 ## styles.css
+

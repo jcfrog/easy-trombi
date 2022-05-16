@@ -70,7 +70,7 @@ Vous trouverez quelques paramètres suplémentaires comme les titres et sous tit
 
 L'allure des cartes de visites affiches dépend de ***styles.css***. 
 
-Vous pourrez notamment chanegr la hauteur des cartes selon vos besoins, et personnaliser chaque champs.
+Vous pourrez notamment changer la hauteur des cartes (class *.tb-card*) selon vos besoins, et personnaliser chaque champs.
 
 A chaque champs défini dans le tableau ***$fields*** dans ***config.php*** est associé un style qu'il suffira de modifier. Au champ ayant la clé "xxxx" correspond le style "tbi-xxxx".
 

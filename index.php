@@ -86,38 +86,46 @@
         <p><?php echo($siteSubtitle);?></p>
 
         <?php
-        while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
-            $path = avatarPath(intval($row["id"]));
-            if (!file_exists($path)) $path = "avatars/user.png";
-        ?>
-            <div class="tb-card">
-                <?php if ($editmode) echo('<div class="change-pic"><a href="base.php?id='.$row["id"].'">🖊️</a></div>'); ?>
-                <?php if ($editmode) echo('<div class="delete-file"><a href="javascript:deleteUser('.$row["id"].');">🗑️</a></div>'); ?>
-                <div class="tb-picture">
-                    <img src="<?php echo ($path) ?>" alt="">
-                </div>
-                <div class="tb-info">
-                    <div class="tbi-name"><?php echo ($row["firstname"] . " <b>" . $row["name"] . "</b>"); ?></div>
-                    <?php
-                    foreach($row as $k => $v){
-                        if ($k != "name" && $k != "firstname" && $k != "id"){
-                            $vdisp = $v ;
-                            if ($fields[$k]["input"] == "date"){                                
-                                $date = new DateTime($v);
-                                $vdisp = $date->format('d F');                                
+        if ($nb == 0){
+            echo("<p>"."Aucune fiche trouvée... Passez en <a href='https://github.com/jcfrog/easy-trombi#edition'>mode édition</a> pour en créer une"."</p>");
+        }else{
+            while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
+                $path = avatarPath(intval($row["id"]));
+                if (!file_exists($path)) $path = "avatars/user.png";
+            ?>
+                <div class="tb-card">
+                    <?php if ($editmode) echo('<div class="change-pic"><a href="base.php?id='.$row["id"].'">🖊️</a></div>'); ?>
+                    <?php if ($editmode) echo('<div class="delete-file"><a href="javascript:deleteUser('.$row["id"].');">🗑️</a></div>'); ?>
+                    <div class="tb-picture">
+                        <img src="<?php echo ($path) ?>" alt="">
+                    </div>
+                    <div class="tb-info">
+                        <div class="tbi-name"><?php echo ($row["firstname"] . " <b>" . $row["name"] . "</b>"); ?></div>
+                        <?php
+                        foreach($row as $k => $v){
+                            if ($k != "name" && $k != "firstname" && $k != "id"){
+                                $vdisp = $v ;
+                                if ($fields[$k]["input"] == "date"){                                
+                                    $date = strtotime($v);
+                                    $vdisp = strftime('%d %B',$date);
+                                }
+                                echo('<div class="tbi-'.$k.'">'.$vdisp.'</div>');
                             }
-                            echo('<div class="tbi-'.$k.'">'.$vdisp.'</div>');
                         }
-                    }
-                    ?>
+                        ?>
 
+                    </div>
                 </div>
-            </div>
-        <?php
-        }
+            <?php
+            } // while
+        }// if
         ?>
-
+        
+        
     </div>    
+    <div id='github-footer'>
+        Propulsé par <a href='https://github.com/jcfrog/easy-trombi'>Easy trombi</a>.
+    </div>
     <script src="xtras/jquery.min.js"></script>
     <script src="xtras/common.js"></script>
 </body>

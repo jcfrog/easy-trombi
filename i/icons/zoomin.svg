@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="58.683mm" height="59.823mm" version="1.1" viewBox="0 0 58.683 59.823" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(-26.176 -97.086)">
+  <path d="m65.707 137.76 12.952 12.952" fill="#6c5353" stop-color="#000000" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".99612" stroke-width="6" style="paint-order:fill markers stroke"/>
+  <circle cx="53.114" cy="124.02" r="22.238" fill="#fff" stop-color="#000000" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".99612" stroke-width="3" style="paint-order:fill markers stroke"/>
+  <g transform="matrix(.88113 0 0 .88113 -39.404 -6.8234)">
+   <rect x="101.79" y="130.89" width="6.4211" height="35.224" ry=".23024" stop-color="#000000" style="paint-order:fill markers stroke"/>
+   <rect transform="rotate(-90)" x="-151.71" y="87.388" width="6.4211" height="35.224" ry=".23024" stop-color="#000000" style="paint-order:fill markers stroke"/>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,239 @@
+/* ubuntu-regular - latin */
+@font-face {
+    font-family: 'Ubuntu2';
+    font-style: normal;
+    font-weight: 800;
+    src: url('./fonts/ubuntu-v19-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('./fonts/ubuntu-v19-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./fonts/ubuntu-v19-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('./fonts/ubuntu-v19-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('./fonts/ubuntu-v19-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/ubuntu-v19-latin-regular.svg#Ubuntu') format('svg'); /* Legacy iOS */
+}
+
+
+/*
+
+base clair : rgb(225, 118, 31) 
+base foncé : rgb(156, 59, 20);
+
+*/
+
+html {
+    font-size: 16px;
+}
+body {
+    font-family: Ubuntu, sans-serif;
+    background-color: rgb(255, 255, 255);
+    color : #333;
+}
+
+hr {
+    border : none ;
+    border-bottom: #bbbbbb 1px solid;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.tb-button{
+    padding : .5rem;
+    background-color : rgb(69, 138, 213);
+    color : white;
+    border-radius: 5px;
+    text-align: center;
+    margin: 5px;
+    cursor: pointer;
+}
+#delete-but{
+    background-color: red;
+}
+
+#contact-info {
+    min-height: 11rem;
+}
+#picture {
+    float : right;
+    padding : 0 1.5rem;
+    max-width : 230px
+}
+#picture img {
+    border-radius : 10px;
+    border : 0.3rem solid rgb(200,200,200);
+    width : 10rem;
+}
+#contactpic {
+    text-align: right;
+}
+.hd-icon-table{
+    left : 0;
+    top : 0;
+    width : 20px;
+    height : 20px;
+}
+.tb-button-action{
+    min-height : 2rem;
+    margin-bottom: 1rem;
+}
+
+
+.formgroup{
+    position: relative;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+input {
+    border : none;
+    border-bottom: 1px solid gray;
+    width : 300px;
+}
+
+input:focus{
+    border-bottom: 1px solid rgb(156, 59, 20);
+    color : rgb(156, 59, 20);
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+label {
+    color : #888;
+    display: block;
+    margin-top:10px;
+}
+
+#contactpicdb{
+    width : 200px;
+    height : 200px;
+    float : right;
+    background: #ddd;
+    margin-right: 20px;
+    background-image: url(avatars/user.png);
+    background-size: contain;
+    border: 1px solid #aaa;
+    text-align: right;
+}
+.delete-file , .change-pic{
+    padding : 5px;
+    cursor: pointer;
+    background: white;
+    width: 20px;
+    border-radius: 50%;
+    height: 20px;
+    text-align: center;
+}
+.delete-file a, .change-pic a{
+    text-decoration: none;
+}
+.delete-file {
+    float:left;
+}
+.change-pic{
+    float:right;
+}
+
+
+#form-area {
+    width : 60%;
+}
+#search {
+    float: right;
+    width : 32%;
+}
+
+
+.user-info {
+    position : fixed ;
+    top: 20px;
+    right : 20px;
+    background-color: #cf0 ;
+    padding : 10px;
+}
+
+.result-choice{
+    cursor: pointer;
+    border-radius: 5px;;
+}
+.result-choice:hover{
+    background-color: rgb(97, 156, 20);
+    color:white;
+}
+
+
+
+.hidden {
+    display: none ;
+}
+
+
+.tb-card{
+	width : 196px;
+	height : 220px;
+	border : 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0px 5px 8px 0px #C4C4C4;
+	border-radius : 5px;
+	padding : 10px;
+	float : left;
+	margin: 10px;
+	text-align : center;
+    border-bottom: 10px solid #a8ec44c7;
+}
+.tb-picture {
+	text-align : center;
+}
+.tb-picture > img {
+	width : 100px;
+	height : 100px;
+	border-radius : 50%;
+}
+
+
+.pagination{
+    font-size: 12px;;
+}
+.page-item{
+    display: inline-block;
+    background-color: black;
+    padding: 3px;
+    border-radius: 15px;
+    min-width: 15px;
+    text-align: center;    
+}
+.page-item a {
+    color: white;
+    text-decoration: none;
+}
+
+.page-item.active a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+.page-item.active {
+    background-color: #bbbbbb;
+}
+
+
+/* fields styles tbi-xxxxx , xxxxx = field name in the data base (cf config.php) */
+
+.tbi-address {
+    font-size: small;
+}
+.tbi-email {
+    font-size: small;
+    color : #79a832;
+}
+.tbi-comments {
+    font-size: smaller;
+    color: grey;
+    line-height: .8rem;
+    font-style: italic;;
+}
+.tbi-bday {
+    font-size: small;
+}
+.tbi-bday::before {
+    content: "🎂 ";
+}

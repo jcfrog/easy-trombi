@@ -11,15 +11,14 @@ Il inclut un mode d'édition un peu automatisé des champs, et une page de créa
 - Placer le répertoire à l'emplacement souhaité sur votre hébergement.
 - copier le fichier ***config-default.php*** sous le nom de ***config.php***.
 - Editer ***config.php*** pour changer le mot de passe : la variable **$md5pw** doit contenir le hash md5 de votre mot de passe. Vous pouvez le créer par exemple [ici](https://www.md5.fr/).
-- Editer au besoin le fichier ***config.php*** nouvellement créé, notamment pour les champs voulus dans la base de données. La table de travail du trombinoscope sera créée à la première consultation du trombinoscope via un navigateur web.
-
-Veiller à ce que les répertoires ***database*** et ***avatars*** soient bien créés et avec des droits en écriture.
+- Editer au besoin le fichier ***config.php***, notamment pour les champs voulus dans la base de données. La table de travail du trombinoscope sera créée à la première consultation du trombinoscope via un navigateur web.
+- ⚠️ Veiller à ce que les répertoires ***database*** et ***avatars*** soient bien créés et avec des droits en écriture.
 
 Pour réinitialiser le processus il suffit d'effacer le fichier SQLite, par défaut ***database/contacts.db***
 
 # Démo
 
-Un trombinoscope d'exemple fait avec les splendides illustrations et l'aimable autorisation de [David Revoy](https://www.davidrevoy.com/) est disponible ici : https://jcfrog.com/trombi
+Un trombinoscope d'exemple fait avec les splendides illustrations et l'aimable autorisation de [David Revoy](https://www.davidrevoy.com/) est disponible ici : https://jcfrog.com/easy-trombi
 
 Il devrait ressembler à ça :
 
@@ -56,7 +55,6 @@ Le signe 🖊️ en haut à droite de l'avatar donne accés à une page d'import
 # Personalisation
 
 ## config.php
-
 
 ## styles.css
 

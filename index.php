@@ -91,7 +91,12 @@
         }else{
             while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
                 $path = avatarPath(intval($row["id"]));
-                if (!file_exists($path)) $path = "avatars/user.png";
+                if (!file_exists($path)){
+                    $path = "avatars/user.png";
+                }else{
+                    // add modification time as a param to avoid cache problems
+                    $path .= "?t=".filemtime($path);
+                }
             ?>
                 <div class="tb-card">
                     <?php if ($editmode) echo('<div class="change-pic"><a href="base.php?id='.$row["id"].'">🖊️</a></div>'); ?>

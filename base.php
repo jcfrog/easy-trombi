@@ -136,7 +136,8 @@ if (!$editmode){
                     window.location.href = "upload-picture.php?id=" + user.id;
                 });
                 if (user.avatarpath) {
-                    $("#contactpicdb").css("background-image", "url(" + user.avatarpath + ")");
+                    var ts = new Date().getTime(); // to avoid cache problems
+                    $("#contactpicdb").css("background-image", "url(" + user.avatarpath + "?t="+ts+")");
                 } else {
                     $("#contactpicdb").css("background-image", "url(<?php echo (DEFAULT_PIC); ?>");
                 }

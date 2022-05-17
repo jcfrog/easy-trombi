@@ -18,6 +18,8 @@ define('TABLE_NAME',"contacts"); // name of the table in the data base
 
 /* edit mode password : put the md5 of your password, you can create it here https://www.md5.fr/ */ 
 $md5pw = "3bfdb73af5d1ab6f5d947439ca96352f";
+$bDispLoginLink = true ; // shall we display a link to login page at the bottom of the page?
+
 
 /* Site identity */
 $siteTitle = "Titre trombinoscope";

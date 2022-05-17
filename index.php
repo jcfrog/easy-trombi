@@ -124,7 +124,10 @@
         
     </div>    
     <div id='github-footer'>
-        Propulsé par <a href='https://github.com/jcfrog/easy-trombi'>Easy trombi</a>.
+        <p>Propulsé par <a href='https://github.com/jcfrog/easy-trombi'>Easy trombi</a>.</p>
+        <?php if(!$editmode && $bDispLoginLink){ ?>
+            <p> <a href="login.php">Mode édition</a></p>
+        <?php } ?>
     </div>
     <script src="xtras/jquery.min.js"></script>
     <script src="xtras/common.js"></script>

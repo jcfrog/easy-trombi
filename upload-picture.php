@@ -269,27 +269,37 @@ if (!$editmode){
 
         document.onpaste = function (pasteEvent) {
             // consider the first item (can be easily extended for multiple items)
-            var item = pasteEvent.clipboardData.items[0];
+            var nbItems = pasteEvent.clipboardData.items.length;
 
-            if (item.type.indexOf("image") === 0) {
-                var blob = item.getAsFile();
+            var counter = 0 ;
+            var bFound = false ;
+            while(!bFound && counter < nbItems){
 
-                var reader = new FileReader();
-                reader.onload = function (event) {
-                    img = new Image();
-                    img.src = event.target.result;
-                    img.onload = function () {
-                        setZoomValue(Math.min(W / img.width, 1));
-                        rebuildZoomedImage();
-                        offset.x = (W - zoomedCnv.width) / 2;
-                        offset.y = (H - zoomedCnv.height) / 2;
-                        refreshDiplay();
-                    }
-                };
+                var item = pasteEvent.clipboardData.items[counter];
+    
+                if (item.type.indexOf("image") === 0) {
+                    
+                    var blob = item.getAsFile();
+    
+                    var reader = new FileReader();
+                    reader.onload = function (event) {
+                        img = new Image();
+                        img.src = event.target.result;
+                        img.onload = function () {
+                            setZoomValue(Math.min(W / img.width, 1));
+                            rebuildZoomedImage();
+                            offset.x = (W - zoomedCnv.width) / 2;
+                            offset.y = (H - zoomedCnv.height) / 2;
+                            refreshDiplay();
+                        }
+                    };
+    
+                    reader.readAsDataURL(blob);
+    
+                    bFound = true;
+                }
 
-                reader.readAsDataURL(blob);
-
-                
+                counter++;
             }
         }
     </script>

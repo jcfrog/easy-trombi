@@ -93,7 +93,7 @@ input {
 
 input:focus{
     border-bottom: 1px solid rgb(156, 59, 20);
-    color : rgb(156, 59, 20);
+    color : rgb(114, 153, 24);
 }
 textarea:focus, input:focus{
     outline: none;
@@ -245,4 +245,7 @@ label {
     font-size : 10px;
     color : gray;
     text-align: center;
+}
+.errormsg{
+    color : red;
 }

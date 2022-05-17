@@ -41,14 +41,11 @@ if ($tableCheck->fetchArray() === false){
     //echo "Table exists";
 }
 
-/* edit mode handling */
+/* edit mode logout handling */
 session_start();
 if (isset($_GET["editpw"])&& !empty($_GET["editpw"])){
     if ($_GET["editpw"] == "stop"){
         unset($_SESSION["admin"]) ;
-    }
-    if (md5($_GET["editpw"]) == $md5pw){
-        $_SESSION["admin"]=true;
     }
 }
 $editmode = isset($_SESSION["admin"]);

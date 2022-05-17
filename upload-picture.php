@@ -64,6 +64,11 @@ if (!$editmode){
             background-color: cornflowerblue;
             color: white;
         }
+        .helptxt{
+            font-size: 12px;
+            margin: 10px 0;
+            color : gray;
+        }
     </style>
     <div id="container">
         <h1>Chargement photo</h1>
@@ -71,9 +76,10 @@ if (!$editmode){
             <input style="display:none;" type="file" name="pic-file" id="pic-file" accept="image/png, image/jpeg">
             <input type="button" id="loadFileBut" value="Importer image"
                 onclick="document.getElementById('pic-file').click();" />
-
-
-        </div>
+                
+                
+            </div>
+            <div class="helptxt">Le copier/coller depuis le presse-papier est aussi possible (Ctrl-V).</div>
         <div id="commands">
             Zoom (%) : <input type="number" name="zoomval" id="zoomval" size=3>
             <div id="zoomin" class="zoombut"></div>

@@ -30,7 +30,7 @@ Une page de login est disponible : ***login.php***
 
 Le mot de passe par défaut est "trombi".
 
-Une option dans le fichier de config permet d'afficher ou non un lien vers cette page de login en bas page principale.
+Une option dans le fichier de config permet d'afficher ou non un lien vers cette page de login en bas de page principale.
 
 Pour sortir du mode édition il faut ajouter le paramètre *?editpw=stop*. Un lien permet de le faire d'un clic.
 

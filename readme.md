@@ -10,11 +10,14 @@ Il inclut un mode d'édition un peu automatisé des champs, et une page de créa
 
 - Placer le répertoire à l'emplacement souhaité sur votre hébergement.
 - copier le fichier ***config-default.php*** sous le nom de ***config.php***.
-- Editer ***config.php*** pour changer le mot de passe : la variable **$md5pw** doit contenir le hash md5 de votre mot de passe. Vous pouvez le créer par exemple [ici](https://www.md5.fr/).
-- Editer au besoin le fichier ***config.php***, notamment pour les champs voulus dans la base de données. La table de travail du trombinoscope sera créée à la première consultation du trombinoscope via un navigateur web.
+- Editer ***config.php*** pour changer notamment les champs voulus dans la base de données ainsi que le dossier de localisation. La table de travail du trombinoscope sera créée à la première consultation du trombinoscope via un navigateur web.
 - ⚠️ Veiller à ce que les répertoires ***database*** et ***avatars*** soient bien créés et avec des droits en écriture.
 
 Pour réinitialiser le processus il suffit d'effacer le fichier SQLite, par défaut ***database/contacts.db***
+
+Le mot de passe n'est pas défini. À la première connexion à la page ***login.php***, vous choisirez celui que vous voudrez. Un fichier sera créé dans le dossier ***database*** dont le nom sera fonction du mot de passe que vous aurez choisi.
+
+En cas d'oubli du mot de passe, il suffira de supprimer le fichier précédemment créé, ainsi que le fichier ***.htaccess***.
 
 # Démo
 

@@ -82,3 +82,9 @@ Exemple: le champ nom *"name"* est affiché selon la règle css *.tbi-name*.
 # license
 
 GPL 3
+
+# Remerciements
+
+Merci à [Jerry Wham](https://toot.aquilenet.fr/@jerry_wham) pour des modifs et conseils concernant la sécurité du code.
+
+Merci à [David Revoy](https://www.davidrevoy.com/) pour ses illustrations utilisées dans la démo et pour la doc.

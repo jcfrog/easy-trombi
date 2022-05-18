@@ -27,19 +27,19 @@ if (isset($_POST['pwd'])){
 
     if (file_exists($dbdir.$psFile)) {
         $md5pw = file_get_contents($dbdir.$psFile);
-
+        if ($passwordTools->validate_password($_POST['pwd'], $md5pw) ){
+            session_start();
+            $_SESSION['admin']=true;
+            header("location:index.php");
+            exit();
+        } else{
+            $errorMsg = "Mot de passe incorrect";
+        }
     } else {
         $md5pw = '';
         $errorMsg = "Mot de passe incorrect";
     }
 
-    if ($passwordTools->validate_password($_POST['pwd'], $md5pw) ){
-        session_start();
-        $_SESSION['admin']=true;
-        header("location:index.php");
-    } else{
-        $errorMsg = "Mot de passe incorrect";
-    }
 }
 ?>
 <!DOCTYPE html>

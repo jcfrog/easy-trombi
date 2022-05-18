@@ -57,7 +57,7 @@ if (isset($_POST['pwd'])){
             <h1>Mode édition</h1>
             <form action="login.php" method="post">
                 <label for="pwd">Mot de passe</label>
-                <input type="text" id="pwd" name="pwd" placeholder="">
+                <input type="password" id="pwd" name="pwd" placeholder="">
                 <input type="submit" value="Valider">
             </form>
             <?php if (isset($errorMsg)) {

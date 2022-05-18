@@ -59,8 +59,6 @@ Le signe 🖊️ en haut à droite de l'avatar donne accés à une page d'import
 
 ## config.php
 
-### Mot de passe édition
-Variable ***$md5pw***, à faire : changer le mot de passe pour le mode "édition", plus exactement son hash md5.
 ### Champs éditables
 Variable ***$fields*** : champs de la base, un tableau permet de définir les champs qu'on veut avoir pour chaque fiche. Mieux vaut laisser les champs "name" et "surname" car ils sont utilisés pour les recherches de fiches.
 

@@ -1,3 +1,4 @@
 avatars/*.jpg
-database/*.db
+database/*
+!database/index.html
 config.php

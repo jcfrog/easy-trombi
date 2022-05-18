@@ -20,11 +20,11 @@ if (isset($_POST['action']) && $editmode){
     // make a search
 
     if ( ($_POST['action'] == "search") && isset($_POST["searched-str"]) ){
-    
+
         $nbmax = 40 ;
 
         $condition = 'name like "%' . $_POST["searched-str"].'%" OR firstname like "%' . $_POST["searched-str"].'%"';
-        
+
         $sql = 'SELECT COUNT(*) as count FROM ' . TABLE_NAME . ' WHERE ' . $condition;
         //echo($sql);
         $count = $db->querySingle($sql);
@@ -71,7 +71,7 @@ if (isset($_POST['action']) && $editmode){
                     }
                 }
                 if (sizeof($keys)>0){
-                    $sql = "INSERT INTO " . TABLE_NAME . " (".implode(", ",$keys).") VALUES (".implode(", ",$values).")";                    
+                    $sql = "INSERT INTO " . TABLE_NAME . " (".implode(", ",$keys).") VALUES (".implode(", ",$values).")";
                     $result = $db->query($sql);
 
                     echo("{\"errMsg\":\"Modifications enregistrées.\",\"id\":\"" . $db->lastInsertRowID() . "\"}");
@@ -84,10 +84,10 @@ if (isset($_POST['action']) && $editmode){
         }
     }
 
-    // delete user 
+    // delete user
     if ($_POST['action'] == "delete" && isset($_POST["id"])){
         // remove from base
-        $sql = "DELETE FROM " . TABLE_NAME . " WHERE id = " . $_POST["id"];        
+        $sql = "DELETE FROM " . TABLE_NAME . " WHERE id = " . $_POST["id"];
         $result = $db->query($sql);
         // delete avatar
         unlink(avatarPath($_POST["id"]));
@@ -100,6 +100,3 @@ if (isset($_POST['action']) && $editmode){
         echo("{\"errMsg\":\"\",\"nbusers\" : \"$count\"}");
     }
 }
-
-
-?>

@@ -11,4 +11,3 @@ if (file_put_contents($fileName, $fileData)){
 }else{
     echo("KO");
 }
-?>

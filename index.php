@@ -1,3 +1,4 @@
+<?php include 'connect.php';?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,9 +13,8 @@
 <body>
     <div class="container">
         <?php
-        include("connect.php");        
-        
-        // pagination 
+
+        // pagination
         // On détermine sur quelle page on se trouve
         if (isset($_GET['page']) && !empty($_GET['page'])) {
             $currentPage = (int) strip_tags($_GET['page']);
@@ -41,15 +41,15 @@
         <div style="float:right;">
                 <div class="pagination">
 
-                    <?php 
-                    if ($currentPage > 1) { 
+                    <?php
+                    if ($currentPage > 1) {
                     ?>
                     <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
                     <div class="page-item">
                         <a href="./?page=<?= $currentPage - 1 ?>" class="page-link"><<</a>
                     </div>
-                    <?php 
-                    } 
+                    <?php
+                    }
                     ?>
 
                     <?php for ($page = 1; $page <= $pages; $page++) : ?>
@@ -58,16 +58,16 @@
                             <a href="./?page=<?= $page ?>" class="page-link"><?= $page ?></a>
                         </div>
                     <?php endfor ?>
-                    
-                    <?php 
-                    if ($currentPage < $pages) { 
+
+                    <?php
+                    if ($currentPage < $pages) {
                     ?>
                     <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
                     <div class="page-item">
                         <a href="./?page=<?= $currentPage + 1 ?>" class="page-link">>></a>
                     </div>
-                    <?php 
-                    } 
+                    <?php
+                    }
                     ?>
 
                 </div>
@@ -79,15 +79,15 @@
 
         <h1><?php echo($siteTitle);?></h1>
         <?php if ($editmode) echo('<div style="float:right;">
-            <a href="base.php">Créer fiche</a> • 
+            <a href="base.php">Créer fiche</a> •
             <a href="?editpw=stop">Sortir du mode édition</a>
-        </div> 
+        </div>
         '); ?>
         <p><?php echo($siteSubtitle);?></p>
 
         <?php
         if ($nb == 0){
-            echo("<p>"."Aucune fiche trouvée... Passez en <a href='https://github.com/jcfrog/easy-trombi#edition'>mode édition</a> pour en créer une"."</p>");
+            echo('<p>Aucune fiche trouvée... Passez en <a href="login.php">mode édition</a> pour en créer une</p>');
         }else{
             while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
                 $path = avatarPath(intval($row["id"]));
@@ -110,7 +110,7 @@
                         foreach($row as $k => $v){
                             if ($k != "name" && $k != "firstname" && $k != "id"){
                                 $vdisp = $v ;
-                                if ($fields[$k]["input"] == "date"){                                
+                                if ($fields[$k]["input"] == "date"){
                                     $date = strtotime($v);
                                     $vdisp = strftime('%d %B',$date);
                                 }
@@ -125,9 +125,9 @@
             } // while
         }// if
         ?>
-        
-        
-    </div>    
+
+
+    </div>
     <div id='github-footer'>
         <p>Propulsé par <a href='https://github.com/jcfrog/easy-trombi'>Easy trombi</a>.</p>
         <?php if(!$editmode && $bDispLoginLink){ ?>

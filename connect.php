@@ -1,13 +1,13 @@
 <?php
-if (!file_exists("config.php")){
-    die("Erreur : il manque le fichier config.php, vous pouvez le créer depuis le fichier exemple config-default.php");
+if (!file_exists('config.php')){
+    exit ('Erreur : il manque le fichier config.php, vous pouvez le créer depuis le fichier exemple config-default.php');
 }
-include('config.php');
+include_once 'config.php';
 if(!is_writable(dirname(DB_PATH))){
-    die("Erreur : le répertoire ".dirname(DB_PATH)." n'est pas accessible en écriture...");
+    exit ('Erreur : le répertoire '.dirname(DB_PATH).' n\'est pas accessible en écriture...');
 }
-if(!is_writable("avatars")){
-    die("Erreur : le répertoire ./avatars n'est pas accessible en écriture...");
+if(!is_writable('avatars')){
+    exit ('Erreur : le répertoire ./avatars n\'est pas accessible en écriture...');
 }
 
 
@@ -55,4 +55,3 @@ function avatarPath($id){
     return sprintf('avatars/%08d.jpg', $id);;
 }
 
-?>

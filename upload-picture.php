@@ -76,8 +76,8 @@ if (!$editmode){
             <input style="display:none;" type="file" name="pic-file" id="pic-file" accept="image/png, image/jpeg">
             <input type="button" id="loadFileBut" value="Importer image"
                 onclick="document.getElementById('pic-file').click();" />
-                
-                
+
+
             </div>
             <div class="helptxt">Le copier/coller depuis le presse-papier est aussi possible (Ctrl-V).</div>
         <div id="commands">
@@ -144,7 +144,7 @@ if (!$editmode){
             zoom = z;
             $("#zoomval").val(Math.round(z * 100));
         }
-        
+
         var id = null;
         $(document).ready(() => {
 
@@ -236,8 +236,8 @@ if (!$editmode){
                     ctx.drawImage(zoomedCnv,
                         (W - finalSize) / 2 - offset.x, (H - finalSize) / 2 - offset.y, finalSize, finalSize,
                         0, 0, finalSize, finalSize);
-                    
-                    
+
+
                     // https://stackoverflow.com/questions/13198131/how-to-save-an-html5-canvas-as-an-image-on-a-server
                     var dataURL = saveCnv.toDataURL('image/jpeg', 0.85);
                     //console.log(dataURL);
@@ -251,9 +251,9 @@ if (!$editmode){
                     }).done(function (o) {
                         console.log('saved',o);
                         window.location.href = "base.php?id="+id;
-                        // If you want the file to be visible in the browser 
+                        // If you want the file to be visible in the browser
                         // - please modify the callback in javascript. All you
-                        // need is to return the url to the file, you just saved 
+                        // need is to return the url to the file, you just saved
                         // and than put the image in your browser.
                     });
                 } else {
@@ -276,11 +276,11 @@ if (!$editmode){
             while(!bFound && counter < nbItems){
 
                 var item = pasteEvent.clipboardData.items[counter];
-    
+
                 if (item.type.indexOf("image") === 0) {
-                    
+
                     var blob = item.getAsFile();
-    
+
                     var reader = new FileReader();
                     reader.onload = function (event) {
                         img = new Image();
@@ -293,9 +293,9 @@ if (!$editmode){
                             refreshDiplay();
                         }
                     };
-    
+
                     reader.readAsDataURL(blob);
-    
+
                     bFound = true;
                 }
 

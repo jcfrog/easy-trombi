@@ -33,7 +33,6 @@ if (isset($_POST['pwd'])){
 
     if (file_exists($dbdir.$psFile)) {
         $md5pw = file_get_contents($dbdir.$psFile);
-
         if ($passwordTools->validate_password($_POST['pwd'], $md5pw) ){
             session_start();
             $_SESSION['admin']=true;

@@ -9,8 +9,9 @@ $fields = array(
     "phone" =>  array( "input" => "text", "label" => "Téléphone"),
     "email" => array( "input" => "email", "label" => "Adresse email"),
     "address" => array( "input" => "text", "label" => "Adresse postale"),
-    "bday" => array("input" => "date", "label" => "Date de naissance"),
-    "comments" => array("input" => "textarea", "label" => "Informations diverses")
+    // if you want to add extra properties, add other field as array
+    'bday' => array('input' => 'date', 'label' => 'Date de naissance', 'other' => array('pattern' => '\d{4}-\d{2}-\d{2}', 'required' => 'required')),
+    'comments' => array('input' => 'textarea', 'label' => 'Informations diverses')
 );
 
 if (!defined('DB_PATH')) {define('DB_PATH', './database/contacts.db');} // SQLite data base file path

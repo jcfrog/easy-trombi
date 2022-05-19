@@ -48,7 +48,7 @@ function processSearchResults(json) {
             var r = rows[i];
             $("#search-results").append("<div class='result-choice' id='choice-"+r.id+"'>"+r.name+" "+r.firstname+"</div>");
         }
-        
+
     }
 }
 function initSearchField(fct) {
@@ -70,7 +70,26 @@ function deleteUser(id){
         },
             (json) => {
                 console.log(json);
+                var r = JSON.parse(json);
+                if (r.errMsg) informUser(r.errMsg);
+                if (r.id) window.location = "base.php";
             }
         );
     }
 }
+
+let delLinks = document.querySelectorAll('.delete-file');
+
+delLinks.forEach(function(link, key, listObj) {
+    link.addEventListener('click', function (e) {
+        deleteUser(link.dataset.id);
+    })
+});
+
+let emailList = document.querySelectorAll('.tbi-email');
+
+emailList.forEach(function(email, key, listObj) {
+    email.addEventListener('click', function (e) {
+        window.location.assign('mailto:'+email.innerHTML);
+    })
+});

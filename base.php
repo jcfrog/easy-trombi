@@ -1,7 +1,7 @@
 <?php
-include("connect.php");
+include 'connect.php';
 if (!$editmode){
-    header("location:index.php");
+    header('location:index.php');
     exit;
 }
 ?>
@@ -20,7 +20,7 @@ if (!$editmode){
 </head>
 
 <body>
-    
+
     <div class="container">
         <p> <a href="index.php">Trombinoscope</a> </p>
         <div id="search">
@@ -39,14 +39,16 @@ if (!$editmode){
             <form method="post" action="base.php">
 
                 <?php
-                include("config.php");
+                include 'config.php';
                 foreach ($fields as $f => $v) {
-                    echo ('<div class="formgroup">');
-                    echo ('<label>' . $v["label"] . '</label> ');
+                    echo '<div class="formgroup">';
+                    echo '<label>' . $v["label"] . '</label> ';
                     if ($v["input"] == "textarea") {
-                        echo ('<textarea id="' . $f . '" name="' . $f . '" cols="80" rows="5"></textarea>');
+                        echo '<textarea id="' . $f . '" name="' . $f . '" cols="80" rows="5"';
+                        if(isset($v['other']) ) { foreach($v['other'] as $index => $value) {echo ' '.$index .($value !== null ? '="'.$value.'"' : '');} } echo '></textarea>'.PHP_EOL;
                     } else {
-                        echo ('<input type="' . $v["input"] . '" name="' . $f . '" id="' . $f . '" value="">');
+                        echo '<input type="' . $v["input"] . '" name="' . $f . '" id="' . $f . '" value=""';
+                        if(isset($v['other']) ) { foreach($v['other'] as $index => $value) {echo ' '.$index .($value !== null ? '="'.$value.'"' : '');} } echo '>'.PHP_EOL;
                     }
                     echo ('</div>');
                 }
@@ -218,7 +220,7 @@ if (!$editmode){
 
         function deleteCurrentUser(){
             if (user){
-                deleteUser(user.id)
+                deleteUser(user.id);
             }
         }
     </script>

@@ -15,7 +15,7 @@
 
 /*
 
-base clair : rgb(225, 118, 31) 
+base clair : rgb(225, 118, 31)
 base foncé : rgb(156, 59, 20);
 
 */
@@ -199,7 +199,7 @@ label {
     padding: 3px;
     border-radius: 15px;
     min-width: 15px;
-    text-align: center;    
+    text-align: center;
 }
 .page-item a {
     color: white;
@@ -224,6 +224,7 @@ label {
 .tbi-email {
     font-size: small;
     color : #79a832;
+    cursor: pointer;
 }
 .tbi-comments {
     font-size: smaller;

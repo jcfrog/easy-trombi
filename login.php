@@ -4,12 +4,10 @@ if (isset($_POST['pwd'])){
     include 'PasswordTools.php';
     $passwordTools = new Core\Lib\PasswordTools(false,false);
 
-    $psFile = md5($_POST['pwd']);
     $dbdir = dirname(DB_PATH).DIRECTORY_SEPARATOR;
 
-    
-    if (!file_exists($dbdir.$psFile)) {
-        
+    if (!file_exists(KEY_SALT)) {
+
         $iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($dbdir));
         $files = array();
         foreach ($iterator as $info) {
@@ -19,14 +17,23 @@ if (isset($_POST['pwd'])){
             }
         }
         if (count($files) == 2) {
+            $salt = md5(date('d-m-y-ii:ss'));
+            file_put_contents(KEY_SALT,$salt);
+
+            $psFile = md5($salt.$_POST['pwd']);
+
             file_put_contents($dbdir.$psFile,$passwordTools->create_hash($_POST['pwd']) );
-            $htaccess = 'Options -Indexes'."\n".'ErrorDocument 403 '.dirname($_SERVER['SCRIPT_URI']).'/index.php'."\n".'Deny from all';
+            $htaccess = 'Options -Indexes'.PHP_EOL.'ErrorDocument 403 '.$_SERVER['HTTP_ORIGIN'].str_replace($_SERVER['DOCUMENT_ROOT'],'/',dirname($_SERVER['SCRIPT_FILENAME'])).'/index.php'.PHP_EOL.'Deny from all';
             file_put_contents($dbdir.'.htaccess',$htaccess);
         }
+    } else {
+        $salt = file_get_contents(KEY_SALT);
+        $psFile = md5($salt.$_POST['pwd']);
     }
 
     if (file_exists($dbdir.$psFile)) {
         $md5pw = file_get_contents($dbdir.$psFile);
+
         if ($passwordTools->validate_password($_POST['pwd'], $md5pw) ){
             session_start();
             $_SESSION['admin']=true;
@@ -36,10 +43,8 @@ if (isset($_POST['pwd'])){
             $errorMsg = "Mot de passe incorrect";
         }
     } else {
-        $md5pw = '';
         $errorMsg = "Mot de passe incorrect";
     }
-
 }
 ?>
 <!DOCTYPE html>

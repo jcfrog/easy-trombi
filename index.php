@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo($siteTitle);?></title>
+    <title><?php echo $siteTitle;?></title>
     <link href="styles.css" rel="stylesheet">
 </head>
 
@@ -77,17 +77,16 @@
         } // si pagination nécessaire
         ?>
 
-        <h1><?php echo($siteTitle);?></h1>
-        <?php if ($editmode) echo('<div style="float:right;">
+        <h1><?php echo $siteTitle;?></h1>
+        <?php if ($editmode) echo '<div style="float:right;">
             <a href="base.php">Créer fiche</a> •
             <a href="?editpw=stop">Sortir du mode édition</a>
-        </div>
-        '); ?>
-        <p><?php echo($siteSubtitle);?></p>
+        </div>'.PHP_EOL; ?>
+        <p><?php echo $siteSubtitle;?></p>
 
         <?php
         if ($nb == 0){
-            echo('<p>Aucune fiche trouvée... Passez en <a href="login.php">mode édition</a> pour en créer une</p>');
+            echo '<p>Aucune fiche trouvée... Passez en <a href="login.php">mode édition</a> pour en créer une.</p>'.PHP_EOL;
         }else{
             while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
                 $path = avatarPath(intval($row["id"]));
@@ -99,13 +98,13 @@
                 }
             ?>
                 <div class="tb-card">
-                    <?php if ($editmode) echo('<div class="change-pic"><a href="base.php?id='.$row["id"].'">🖊️</a></div>'); ?>
-                    <?php if ($editmode) echo('<div class="delete-file"><a href="javascript:deleteUser('.$row["id"].');">🗑️</a></div>'); ?>
+                    <?php if ($editmode) echo '<div class="change-pic"><a href="base.php?id='.$row["id"].'">🖊️</a></div>'.PHP_EOL; ?>
+                    <?php if ($editmode) echo '<div class="delete-file" data-id="'.$row["id"].'">🗑️</div>'.PHP_EOL; ?>
                     <div class="tb-picture">
-                        <img src="<?php echo ($path) ?>" alt="">
+                        <img src="<?php echo $path; ?>" alt="">
                     </div>
                     <div class="tb-info">
-                        <div class="tbi-name"><?php echo ($row["firstname"] . " <b>" . $row["name"] . "</b>"); ?></div>
+                        <div class="tbi-name"><?php echo $row["firstname"] . " <b>" . $row["name"] . "</b>"; ?></div>
                         <?php
                         foreach($row as $k => $v){
                             if ($k != "name" && $k != "firstname" && $k != "id"){
@@ -114,7 +113,7 @@
                                     $date = strtotime($v);
                                     $vdisp = strftime('%d %B',$date);
                                 }
-                                echo('<div class="tbi-'.$k.'">'.$vdisp.'</div>');
+                                echo '<div class="tbi-'.$k.'">'.$vdisp.'</div>'.PHP_EOL;
                             }
                         }
                         ?>

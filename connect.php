@@ -34,24 +34,25 @@ if ($tableCheck->fetchArray() === false){
             "'.$f.'" TEXT';
         }
     $sql .=');';
-    echo("La table a été créée avec la requête suivante : <br>");
-    echo($sql);
+    echo 'La table a été créée avec la requête suivante : <br>';
+    echo $sql;
     $db->query($sql);
+    echo '<br>Rendez-vous à la <a href="login.php">page d\'édition</a> afin de personnaliser le mot de passe.<br>'.PHP_EOL;
 }else{
     //echo "Table exists";
 }
 
 /* edit mode logout handling */
 session_start();
-if (isset($_GET["editpw"])&& !empty($_GET["editpw"])){
-    if ($_GET["editpw"] == "stop"){
-        unset($_SESSION["admin"]) ;
+if (isset($_GET['editpw'])&& !empty($_GET['editpw'])){
+    if ($_GET['editpw'] == "stop"){
+        unset($_SESSION['admin']) ;
     }
 }
-$editmode = isset($_SESSION["admin"]);
+$editmode = isset($_SESSION['admin']);
 
 
 function avatarPath($id){
-    return sprintf('avatars/%08d.jpg', $id);;
+    return sprintf('avatars/%08d.jpg', intval($id));
 }
 

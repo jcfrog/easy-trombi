@@ -17,7 +17,7 @@ Pour réinitialiser le processus il suffit d'effacer le fichier SQLite, par déf
 
 Le mot de passe n'est pas défini. À la première connexion à la page ***login.php***, vous choisirez celui que vous voudrez. Un fichier sera créé dans le dossier ***database*** dont le nom sera fonction du mot de passe que vous aurez choisi.
 
-En cas d'oubli du mot de passe, il suffira de supprimer le fichier précédemment créé, ainsi que le fichier ***.htaccess***.
+En cas d'oubli du mot de passe, il suffira de supprimer le fichier précédemment créé, ainsi que le fichier ***.htaccess*** et le fichier de *salage* (fichier caché dont le nom est dans le fichier ***config.cpp***, variable KEY_SALT).
 
 # Démo
 

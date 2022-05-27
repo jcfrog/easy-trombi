@@ -24,8 +24,9 @@
         $nb = $db->querySingle("SELECT COUNT(*) AS nb FROM " . TABLE_NAME);
         $pages = ceil($nb / NB_PER_PAGE);
         $first = ($currentPage * NB_PER_PAGE) - NB_PER_PAGE;
+        reset($mandatories);
 
-        $sql = "SELECT * FROM " . TABLE_NAME . " WHERE 1 ORDER BY name LIMIT :first, :perpage";
+        $sql = 'SELECT * FROM ' . TABLE_NAME . ' WHERE 1 ORDER BY '.current($mandatories).' LIMIT :first, :perpage';
         $query = $db->prepare($sql);
 
         $query->bindValue(':first', $first, SQLITE3_INTEGER);
@@ -107,9 +108,9 @@
                         <div class="tbi-name"><?php echo $row["firstname"] . " <b>" . $row["name"] . "</b>"; ?></div>
                         <?php
                         foreach($row as $k => $v){
-                            if ($k != "name" && $k != "firstname" && $k != "id"){
+                        if (($k != 'id') && ($k != 'name') && ($k != 'firstname')) {
                                 $vdisp = $v ;
-                                if ($fields[$k]["input"] == "date"){
+                                if ($fields[$k]['input'] == 'date'){
                                     $date = strtotime($v);
                                     $vdisp = strftime('%d %B',$date);
                                 }

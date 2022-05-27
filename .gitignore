@@ -1,4 +1,6 @@
 avatars/*.jpg
 database/*
 !database/index.html
+seasoning/*
+!seasoning/index.html
 config.php

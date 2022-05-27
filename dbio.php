@@ -32,7 +32,12 @@ if (isset($_POST['action']) && $editmode){
 
         $string = htmlentities($_POST['searched-str']);
 
-        $condition = 'name like "%"||:str||"%" OR firstname like "%"||:str||"%"';
+        $condition = '';
+
+        foreach($mandatories as $k => $label) {
+            $condition .= $label .' like "%"||:str||"%" OR ';
+        }
+        $condition = substr($condition,0,-4);
 
         $sql = 'SELECT COUNT(*) as count FROM ' . TABLE_NAME . ' WHERE ' . $condition;
 
@@ -49,7 +54,7 @@ if (isset($_POST['action']) && $editmode){
         }else if ($count > $nbmax){
             echo '{"errMsg":"Désolé, trop de résultats pour '. $string.'... ('.$count.')"}';
         }else{
-            $sql = 'SELECT id, name , firstname , address FROM ' . TABLE_NAME . ' WHERE ' . $condition . 'ORDER BY name , firstname ASC LIMIT ' . $nbmax ;
+            $sql = 'SELECT id, '. implode(', ',$mandatories).' FROM ' . TABLE_NAME . ' WHERE ' . $condition . 'ORDER BY '.implode(', ',$mandatories).' ASC LIMIT ' . $nbmax ;
             //var_dump($sql);
 
             $query = $db->prepare($sql);
@@ -151,7 +156,7 @@ if (isset($_POST['action']) && $editmode){
     }
 
     // delete user
-    if ($_POST['action'] == "delete" && isset($_POST['id'])){
+    if ($_POST['action'] == 'delete' && isset($_POST['id'])){
         // remove from base
         $sql = 'DELETE FROM ' . TABLE_NAME . ' WHERE id = :id';
 

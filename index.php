@@ -26,8 +26,15 @@
         $first = ($currentPage * NB_PER_PAGE) - NB_PER_PAGE;
         reset($mandatories);
 
-        $sql = 'SELECT * FROM ' . TABLE_NAME . ' WHERE 1 ORDER BY '.current($mandatories).' LIMIT :first, :perpage';
+        $search = isset($_GET['q']) ? $_GET['q'] : '';
+        $sql = 'SELECT * FROM ' . TABLE_NAME . ' WHERE ';
+        foreach ($mandatories as $mandatory) {
+            $sql .= $mandatory . ' LIKE :search OR ';
+        }
+        $sql = rtrim($sql, ' OR ');
+        $sql .= ' ORDER BY ' . current($mandatories) . ' LIMIT :first, :perpage';
         $query = $db->prepare($sql);
+        $query->bindValue(':search', '%' . $search . '%', SQLITE3_TEXT);
 
         $query->bindValue(':first', $first, SQLITE3_INTEGER);
         $query->bindValue(':perpage', NB_PER_PAGE, SQLITE3_INTEGER);
@@ -85,7 +92,21 @@
         </div>'.PHP_EOL; ?>
         <p><?php echo $siteSubtitle;?></p>
 
+        <form action="index.php" method="get">
+            <input type="text" name="q" placeholder="Rechercher..." required>
+            <input type="submit" value="Rechercher">
+        </form>
+
+
+
         <?php
+
+        // if search
+        if ($search != ''){
+            echo '<p>Résultats de la recherche pour <b>'.$search.'</b> :</p>'.PHP_EOL;
+            echo '<p><a href="index.php">Retour à la liste complète</a></p>'.PHP_EOL;
+        }
+
         if ($nb == 0){
             echo '<p>Aucune fiche trouvée... Passez en <a href="login.php">mode édition</a> pour en créer une.</p>'.PHP_EOL;
         }else{

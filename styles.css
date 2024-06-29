@@ -1,6 +1,6 @@
 /* ubuntu-regular - latin */
 @font-face {
-    font-family: 'Ubuntu2';
+    font-family: 'Ubuntuv19';
     font-style: normal;
     font-weight: 800;
     src: url('./fonts/ubuntu-v19-latin-regular.eot'); /* IE9 Compat Modes */
@@ -24,7 +24,7 @@ html {
     font-size: 16px;
 }
 body {
-    font-family: Ubuntu, sans-serif;
+    font-family: Ubuntuv19, sans-serif;
     background-color: rgb(255, 255, 255);
     color : #333;
 }
@@ -37,6 +37,15 @@ hr {
 .container {
     max-width: 1000px;
     margin: 0 auto;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+h1 > img {
+    height: 2rem;
+    vertical-align: baseline;
 }
 
 .tb-button{

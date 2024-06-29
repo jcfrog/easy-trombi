@@ -13,6 +13,8 @@ if (!$editmode){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="xtras/jquery.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+
     <title>Upload photo</title>
 </head>
 

@@ -85,7 +85,10 @@
         } // si pagination nécessaire
         ?>
 
-        <h1><?php echo $siteTitle;?></h1>
+        <h1>
+            <?php if ($siteLogo != '') echo '<img src="'.$siteLogo.'" alt="logo">';?>
+            <?php echo $siteTitle;?>
+        </h1>
         <?php if ($editmode) echo '<div style="float:right;">
             <a href="base.php">Créer fiche</a> •
             <a href="?editpw=stop">Sortir du mode édition</a>

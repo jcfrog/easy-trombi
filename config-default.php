@@ -24,6 +24,7 @@ $bDispLoginLink = true ; // shall we display a link to login page at the bottom 
 /* Site identity */
 $siteTitle = "Titre trombinoscope";
 $siteSubtitle = "Sous-titre pour mon trombinoscope";
+$siteLogo = "i/logo-lr.jpg"; // path to the logo image. Remove it if you don't want to display a logo
 
 /* according to your place */
 setlocale(LC_ALL, 'fr_FR.UTF-8');

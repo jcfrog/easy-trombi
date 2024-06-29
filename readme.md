@@ -19,7 +19,8 @@ Le mot de passe n'est pas défini. À la première connexion à la page ***login
 
 En cas d'oubli du mot de passe, il faudra supprimer le fichier précédemment créé, ainsi que le fichier ***.htaccess*** et le fichier de *salage* (fichier caché dans le répertoire ***seasoning*** dont le nom est dans le fichier ***config.cpp***, variable KEY_SALT).
 
-EMplacement des fichiers à supprimer (les votres n'auront pas les mêmes noms)
+Emplacement des fichiers à supprimer (les votres n'auront pas les mêmes noms)
+
 ![fichiers à supprimer](./doc/security.png)
 
 

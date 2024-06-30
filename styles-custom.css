@@ -1,0 +1,22 @@
+/* fields styles tbi-xxxxx , xxxxx = field name in the data base (cf config.php) */
+
+.tbi-address {
+    font-size: small;
+}
+.tbi-email {
+    font-size: small;
+    color : #79a832;
+    cursor: pointer;
+}
+.tbi-comments {
+    font-size: smaller;
+    color: grey;
+    line-height: .8rem;
+    font-style: italic;;
+}
+.tbi-bday {
+    font-size: small;
+}
+.tbi-bday::before {
+    content: "🎂 ";
+}

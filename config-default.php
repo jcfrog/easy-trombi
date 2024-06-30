@@ -16,7 +16,7 @@ $fields = array(
 
 if (!defined('DB_PATH')) {define('DB_PATH', './database/contacts.db');} // SQLite data base file path
 if (!defined('TABLE_NAME')) {define('TABLE_NAME',"contacts");} // name of the table in the data base
-if (!defined('KEY_SALT')) {define('KEY_SALT','./.'.'FKj8D98FUF8S0978Sdfdpodf');} // name of the file for salt
+if (!defined('KEY_SALT')) {define('KEY_SALT','./seasoning/'.'.FKj8D98FUF8S0978Sdfdpodf');} // name of the file for salt
 
 $bDispLoginLink = true ; // shall we display a link to login page at the bottom of the page?
 

@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $siteTitle;?></title>
     <link href="styles.css" rel="stylesheet">
+    <link href="styles-custom.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.ico" />
 </head>
 
 <body>
@@ -129,7 +131,7 @@
                         <img src="<?php echo $path; ?>" alt="">
                     </div>
                     <div class="tb-info">
-                        <div class="tbi-name"><?php echo $row["firstname"] . " <b>" . $row["name"] . "</b>"; ?></div>
+                        <div class="tbi-firstname"><?php echo $row["firstname"] . " <span class='tbi-name'>" . $row["name"] . "</span>"; ?></div>
                         <?php
                         foreach($row as $k => $v){
                         if (($k != 'id') && ($k != 'name') && ($k != 'firstname')) {

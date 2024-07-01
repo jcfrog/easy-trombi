@@ -112,42 +112,46 @@
             echo '<p><a href="index.php">Retour à la liste complète</a></p>'.PHP_EOL;
         }
 
+
+        function dispRow($row, $editMode, $fields){
+            $html = '';
+            $path = avatarPath(intval($row["id"]));
+            if (!file_exists($path)){
+                $path = "avatars/user.png";
+            }else{
+                // add modification time as a param to avoid cache problems
+                $path .= "?t=".filemtime($path);
+            }
+            $html .= '<div class="tb-card">';
+            if ($editMode) $html .= '<div class="change-pic"><a href="base.php?id='.$row["id"].'">🖊️</a></div>'.PHP_EOL;
+            if ($editMode) $html .=  '<div class="delete-file" data-id="'.$row["id"].'">🗑️</div>'.PHP_EOL;
+                $html .= '<div class="tb-picture">';
+                    $html .= '<img src="'. $path .' alt="">';
+                $html .= '</div>';
+                $html .= '<div class="tb-info">';
+                $html .= '<div class="tbi-firstname">' . $row["firstname"] . ' <span class="tbi-name">' . $row["name"] . "</span></div>";
+                //foreach($row as $k => $v){
+                foreach($fields as $k => $v){
+                    $v = $row[$k];
+                    if (($k != 'id') && ($k != 'name') && ($k != 'firstname')) {
+                        $vdisp = $v ;
+                        if ($fields[$k]['input'] == 'date'){
+                            $date = strtotime($v);
+                            $vdisp = strftime('%d %B',$date);
+                        }
+                        $html .= '<div class="tbi-'.$k.'">'.$vdisp.'</div>'.PHP_EOL;
+                    }
+                }
+                $html .= '</div>';
+            $html .= '</div>';
+            return $html;
+        }
+
         if ($nb == 0){
             echo '<p>Aucune fiche trouvée... Passez en <a href="login.php">mode édition</a> pour en créer une.</p>'.PHP_EOL;
         }else{
             while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
-                $path = avatarPath(intval($row["id"]));
-                if (!file_exists($path)){
-                    $path = "avatars/user.png";
-                }else{
-                    // add modification time as a param to avoid cache problems
-                    $path .= "?t=".filemtime($path);
-                }
-            ?>
-                <div class="tb-card">
-                    <?php if ($editmode) echo '<div class="change-pic"><a href="base.php?id='.$row["id"].'">🖊️</a></div>'.PHP_EOL; ?>
-                    <?php if ($editmode) echo '<div class="delete-file" data-id="'.$row["id"].'">🗑️</div>'.PHP_EOL; ?>
-                    <div class="tb-picture">
-                        <img src="<?php echo $path; ?>" alt="">
-                    </div>
-                    <div class="tb-info">
-                        <div class="tbi-firstname"><?php echo $row["firstname"] . " <span class='tbi-name'>" . $row["name"] . "</span>"; ?></div>
-                        <?php
-                        foreach($row as $k => $v){
-                        if (($k != 'id') && ($k != 'name') && ($k != 'firstname')) {
-                                $vdisp = $v ;
-                                if ($fields[$k]['input'] == 'date'){
-                                    $date = strtotime($v);
-                                    $vdisp = strftime('%d %B',$date);
-                                }
-                                echo '<div class="tbi-'.$k.'">'.$vdisp.'</div>'.PHP_EOL;
-                            }
-                        }
-                        ?>
-
-                    </div>
-                </div>
-            <?php
+                echo dispRow($row, $editmode, $fields);
             } // while
         }// if
         ?>

@@ -135,11 +135,18 @@
                     $v = $row[$k];
                     if (($k != 'id') && ($k != 'name') && ($k != 'firstname')) {
                         $vdisp = $v ;
-                        if ($fields[$k]['input'] == 'date'){
-                            $date = strtotime($v);
-                            $vdisp = strftime('%d %B',$date);
+                        //if (strlen($v) > 50) $vdisp = substr($v,0,50).'...';
+                        if (strlen($v) > 0) {
+
+                            if ($fields[$k]['input'] == 'date'){
+                                $date = strtotime($v);
+                                $vdisp = strftime('%d %B',$date);
+                            }
+                            if ($fields[$k]['display-label'] == true)
+                                $html .= '<div class="tbi-'.$k.'"><span class="tbi-label tbi-label-'.$k.'">'.$fields[$k]['label'].'</span> : '.$vdisp.'</div>'.PHP_EOL;
+                            else
+                                $html .= '<div class="tbi-'.$k.'">'.$vdisp.'</div>'.PHP_EOL;
                         }
-                        $html .= '<div class="tbi-'.$k.'">'.$vdisp.'</div>'.PHP_EOL;
                     }
                 }
                 $html .= '</div>';

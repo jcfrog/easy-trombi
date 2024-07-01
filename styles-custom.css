@@ -20,3 +20,8 @@
 .tbi-bday::before {
     content: "🎂 ";
 }
+
+
+.tbi-label-band{
+    color: #79a832;
+}

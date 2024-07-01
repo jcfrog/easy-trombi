@@ -232,6 +232,11 @@ label {
  .tbi-name {
     font-weight: bold;  
 }
+.tbi-label {
+    color: #888;
+    font-size: small;
+    font-weight: bold;
+}
 
 
 #github-footer {

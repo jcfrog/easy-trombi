@@ -60,7 +60,8 @@ h1 > img {
 
 .tb-info {
     height: 7rem;
-    overflow: scroll;
+    overflow: hidden;
+    overflow-y: auto;
 }
 #delete-but{
     background-color: red;

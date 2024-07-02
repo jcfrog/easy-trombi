@@ -203,6 +203,10 @@ label {
 	height : 100px;
 	border-radius : 50%;
 }
+.tb-picture-big > img{
+    width: 200px;
+    height: 200px;
+}
 
 
 .pagination{

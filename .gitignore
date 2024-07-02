@@ -4,3 +4,4 @@ database/*
 seasoning/*
 !seasoning/index.html
 config.php
+workshop

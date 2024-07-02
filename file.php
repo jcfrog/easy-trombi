@@ -19,6 +19,7 @@ if (isset($_GET['id'])) {
 
     <link href="styles.css" rel="stylesheet">
     <script src="xtras/jquery.min.js"></script>
+    <link rel="icon" type="image/png" href="favicon.ico" />
 
 </head>
 <body>

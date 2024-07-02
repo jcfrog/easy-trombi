@@ -1,7 +1,7 @@
 <?php
 include 'connect.php';
 
-if (isset($_POST['action']) && $editmode){
+if (isset($_POST['action'])){
 
     // load user data from id
     if ( ($_POST['action'] == 'loadbyid') && isset($_POST['id']) ){
@@ -73,7 +73,7 @@ if (isset($_POST['action']) && $editmode){
 
 
     // update user data
-    if ($_POST['action'] == "update"){
+    if ($_POST['action'] == "update"  && $editmode){
         if ($data = json_decode($_POST['updates'])) {
             if ($data->id >= 0){ // update this user data
                 $sql = 'UPDATE ' . TABLE_NAME . ' SET ';
@@ -156,7 +156,7 @@ if (isset($_POST['action']) && $editmode){
     }
 
     // delete user
-    if ($_POST['action'] == 'delete' && isset($_POST['id'])){
+    if ($_POST['action'] == 'delete' && isset($_POST['id']) && $editmode){
         // remove from base
         $sql = 'DELETE FROM ' . TABLE_NAME . ' WHERE id = :id';
 

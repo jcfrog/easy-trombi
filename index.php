@@ -123,10 +123,11 @@
                 $path .= "?t=".filemtime($path);
             }
             $html .= '<div class="tb-card">';
+            if (!$editMode) $html .= '<div class="change-pic"><a href="file.php?id='.$row["id"].'">🔍</a></div>'.PHP_EOL;
             if ($editMode) $html .= '<div class="change-pic"><a href="base.php?id='.$row["id"].'">🖊️</a></div>'.PHP_EOL;
             if ($editMode) $html .=  '<div class="delete-file" data-id="'.$row["id"].'">🗑️</div>'.PHP_EOL;
                 $html .= '<div class="tb-picture">';
-                    $html .= '<img src="'. $path .' alt="">';
+                    $html .= '<img src="'. $path .'" alt="">';
                 $html .= '</div>';
                 $html .= '<div class="tb-info">';
                 $html .= '<div class="tbi-firstname">' . $row["firstname"] . ' <span class="tbi-name">' . $row["name"] . "</span></div>";

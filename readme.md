@@ -6,6 +6,8 @@ Il est né d'un besoin ponctuel et ne prétend pas à l'excellence, mais  peut s
 
 Il inclut un mode d'édition un peu automatisé des champs, et une page de création d'avatar avec import ou copier/collé direct d'image.
 
+![easy trombi logo](i/logo-lr.jpg)
+
 # Installation
 
 - Placer le répertoire à l'emplacement souhaité sur votre hébergement.
@@ -69,6 +71,12 @@ Le signe 🖊️ en haut à droite de l'avatar donne accés à une page d'import
 
 Variable ***$fields*** : champs de la base, un tableau permet de définir les champs qu'on veut avoir pour chaque fiche. Les champs à utiliser pour les recherches de fiches doivent être indiqués comme ***mandatory***. Au moins un champ doit être considéré comme mandatory.
 
+Exemple
+
+```php
+    "name" => array ( "input" => "text", "label" => "Nom", "mandatory" => true),
+```
+
 Pour chaque champ on donne le type d'input (date, text, textarea, email), et un label.
 
 La base sera mise à jour en cas d'ajout de nouveaux champs.
@@ -76,19 +84,43 @@ En cas de suppression de champs, une confirmation sera demandée.
 
 Si l'on veut ajouter d'autres options au champ, il suffit de renseigner un tableau ***other***.
 
+En dehors des nom et prénom, l'ordre d'affichage est déterminé par l'ordre des champs dans ***$fields***.
+
+Par défaut le label n'est pas affiché, pour qu'il le soit, il faut ajouter pour le champs correpondant un ***display-label***.
+
+Exemple:
+```php
+    "phone" =>  array( "input" => "text", "label" => "Téléphone", "display-label" => true),
+```
+
+### Logo
+
+Pour personnaliser un logo peut être ajouté devant le titre du trombinoscope grâce à la variable *$siteLogo*. Il suffit d'enlever la ligne si on ne veut pas de logo.
+
+```php
+/* Site identity */
+$siteTitle = "Titre trombinoscope";
+$siteSubtitle = "Sous-titre pour mon trombinoscope";
+$siteLogo = "workshop/logo.png"; // path to the logo image. Remove it if you don't want to display a logo
+```
+
 ### Autres
 
 Vous trouverez quelques paramètres suplémentaires comme les titres et sous titre pour le trombinoscope, ou encore le nombre de fiches par pages.
 
 ## styles.css
 
-L'allure des cartes de visites affiches dépend de ***styles.css***. 
+L'allure des cartes de visites affichées dépend de ***styles.css***. 
 
 Vous pourrez notamment changer la hauteur des cartes (class *.tb-card*) selon vos besoins, et personnaliser chaque champs.
 
-A chaque champs défini dans le tableau ***$fields*** dans ***config.php*** est associé un style qu'il suffira de modifier. Au champ ayant la clé "xxxx" correspond le style "tbi-xxxx".
+## style-custom.css
+
+Ce fichier contient les styles pour les champs affichés. A chaque champs défini dans le tableau ***$fields*** dans ***config.php*** est associé un style qu'il suffira de modifier. Au champ ayant la clé "xxxx" correspond le style "tbi-xxxx".
 
 Exemple: le champ nom *"name"* est affiché selon la règle css *.tbi-name*.
+
+De la même façon on pourra modifier le style du label du champs s'il est affiché: "tbi-label-xxxx"
 
 # license
 
